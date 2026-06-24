@@ -13,7 +13,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Modelos servidos por Ollama en http://localhost:11434
 # Comprobar con `ollama list` que estén descargados antes de arrancar.
-LLM_MODEL = "qwen3:8b"
+LLM_MODEL = "gemma3:4b"
 EMBEDDING_MODEL = "nomic-embed-text"
 TEMPERATURE = 0.3
 
