@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PÍLDORA-S IA — Ideas que resuelven. IA que transforma.</title>
+  <meta name="description" content="Seis proyectos finales desarrollados con Python e Inteligencia Artificial, listos para GitHub." />
+  <style>
+    :root {
+      --bg: #f7f8fa;
+      --surface: #ffffff;
+      --ink: #1a1d21;
+      --ink-soft: #5b626b;
+      --line: #e6e8ec;
+      --navy: #003d82;
+      --purple: #6b4ce3;
+      --radius: 20px;
+      --shadow: 0 1px 2px rgba(16, 24, 40, .04), 0 8px 24px rgba(16, 24, 40, .06);
+      --shadow-hover: 0 4px 8px rgba(16, 24, 40, .06), 0 18px 40px rgba(16, 24, 40, .12);
+
+      /* paleta pastel por proyecto */
+      --c1: #e6f4ea; --c1-ink: #1f8a4c;
+      --c2: #e7f0fb; --c2-ink: #1f6fd6;
+      --c3: #efeafe; --c3-ink: #6b4ce3;
+      --c4: #e4f6f6; --c4-ink: #178a8a;
+      --c5: #fdeede; --c5-ink: #d2731c;
+      --c6: #eaf1fb; --c6-ink: #2d6cc7;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Segoe UI", "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      text-align: center;
+      padding: 88px 0 56px;
+    }
+
+    .hero .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+
+    .hero .pill-icon {
+      width: 46px; height: 46px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--navy), var(--purple));
+      display: grid; place-items: center;
+      font-size: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      font-weight: 800;
+      letter-spacing: -.02em;
+    }
+    .hero h1 .ia {
+      background: linear-gradient(135deg, var(--navy), var(--purple));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero .eyebrow {
+      display: inline-block;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--purple);
+      margin-bottom: 16px;
+    }
+
+    .hero .tagline {
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      font-weight: 600;
+      color: var(--ink);
+      margin: 18px auto 14px;
+    }
+    .hero .tagline .accent { color: var(--purple); }
+
+    .hero .lead {
+      max-width: 620px;
+      margin: 0 auto;
+      color: var(--ink-soft);
+      font-size: 1.05rem;
+    }
+    .hero .lead strong { color: var(--navy); }
+
+    /* ---------- GRID DE PROYECTOS ---------- */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      padding: 24px 0 64px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px 26px;
+      box-shadow: var(--shadow);
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 5px;
+      background: var(--accent-ink);
+      opacity: .85;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-hover);
+      border-color: transparent;
+    }
+
+    .card .top {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .card .num {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      display: grid; place-items: center;
+      font-weight: 800;
+      font-size: 1rem;
+      background: var(--accent-bg);
+      color: var(--accent-ink);
+    }
+
+    .card .ico {
+      font-size: 1.6rem;
+      margin-left: auto;
+      opacity: .9;
+    }
+
+    .card h3 {
+      font-size: 1.18rem;
+      font-weight: 700;
+      letter-spacing: -.01em;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: var(--ink-soft);
+      font-size: .96rem;
+      margin-bottom: 22px;
+    }
+
+    .card .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--accent-ink);
+    }
+    .card .badge .check {
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: var(--accent-ink);
+      color: #fff;
+      display: grid; place-items: center;
+      font-size: .62rem;
+    }
+
+    /* colores por card */
+    .card.p1 { --accent-bg: var(--c1); --accent-ink: var(--c1-ink); }
+    .card.p2 { --accent-bg: var(--c2); --accent-ink: var(--c2-ink); }
+    .card.p3 { --accent-bg: var(--c3); --accent-ink: var(--c3-ink); }
+    .card.p4 { --accent-bg: var(--c4); --accent-ink: var(--c4-ink); }
+    .card.p5 { --accent-bg: var(--c5); --accent-ink: var(--c5-ink); }
+    .card.p6 { --accent-bg: var(--c6); --accent-ink: var(--c6-ink); }
+
+    /* ---------- FOOTER ---------- */
+    .footer {
+      background: var(--surface);
+      border-top: 1px solid var(--line);
+      padding: 48px 0;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .info {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 22px;
+      border-radius: 16px;
+      background: var(--bg);
+      border: 1px solid var(--line);
+    }
+    .info .info-ico {
+      font-size: 1.5rem;
+      line-height: 1;
+    }
+    .info .info-txt strong { display: block; color: var(--ink); font-size: .98rem; }
+    .info .info-txt span { color: var(--ink-soft); font-size: .9rem; }
+
+    .copyright {
+      text-align: center;
+      margin-top: 36px;
+      color: var(--ink-soft);
+      font-size: .85rem;
+    }
+    .copyright .accent { color: var(--purple); font-weight: 600; }
+
+    /* ---------- ANIMACIÓN DE ENTRADA ---------- */
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .reveal.show { opacity: 1; transform: none; }
+
+    /* ---------- RESPONSIVO ---------- */
+    @media (max-width: 900px) {
+      .projects { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 560px) {
+      .hero { padding: 60px 0 40px; }
+      .projects { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <header class="hero wrap">
+    <div class="logo">
+      <span class="pill-icon">💊</span>
+      <h1>PÍLDORA-S <span class="ia">IA</span></h1>
+    </div>
+    <div class="eyebrow">6 Proyectos • 1 Solución Inteligente</div>
+    <p class="tagline">Ideas que resuelven. <span class="accent">IA que transforma.</span></p>
+    <p class="lead">Seis proyectos finales desarrollados con <strong>Python</strong> e <strong>Inteligencia Artificial</strong>, listos para GitHub.</p>
+  </header>
+
+  <!-- PROYECTOS -->
+  <main class="projects wrap">
+    <article class="card p1 reveal">
+      <div class="top">
+        <span class="num">01</span>
+        <span class="ico">📊</span>
+      </div>
+      <h3>Finanzas</h3>
+      <p>Análisis inteligente de gastos e ingresos. Predicciones y consejos personalizados.</p>
+      <span class="badge"><span class="check">✓</span> Proyecto finalizado · Listo para GitHub</span>
+    </article>
+
+    <article class="card p2 reveal">
+      <div class="top">
+        <span class="num">02</span>
+        <span class="ico">🤖</span>
+      </div>
+      <h3>Soporte</h3>
+      <p>Chatbot inteligente que entiende, responde y resuelve problemas.</p>
+      <span class="badge"><span class="check">✓</span> Proyecto finalizado · Listo para GitHub</span>
+    </article>
+
+    <article class="card p3 reveal">
+      <div class="top">
+        <span class="num">03</span>
+        <span class="ico">📄</span>
+      </div>
+      <h3>CV</h3>
+      <p>Generador de CV inteligente, adaptable y optimizado con IA.</p>
+      <span class="badge"><span class="check">✓</span> Proyecto finalizado · Listo para GitHub</span>
+    </article>
+
+    <article class="card p4 reveal">
+      <div class="top">
+        <span class="num">04</span>
+        <span class="ico">🌍</span>
+      </div>
+      <h3>Viajes</h3>
+      <p>Planificador de viajes inteligente según tus preferencias y presupuesto.</p>
+      <span class="badge"><span class="check">✓</span> Proyecto finalizado · Listo para GitHub</span>
+    </article>
+
+    <article class="card p5 reveal">
+      <div class="top">
+        <span class="num">05</span>
+        <span class="ico">🎬</span>
+      </div>
+      <h3>Campañas Multimedia</h3>
+      <p>Crea campañas completas con textos, imágenes y videos generados por IA.</p>
+      <span class="badge"><span class="check">✓</span> Proyecto finalizado · Listo para GitHub</span>
+    </article>
+
+    <article class="card p6 reveal">
+      <div class="top">
+        <span class="num">06</span>
+        <span class="ico">🩺</span>
+      </div>
+      <h3>Trial Médico</h3>
+      <p>Asistente para diseño y análisis de ensayos clínicos con IA.</p>
+      <span class="badge"><span class="check">✓</span> Proyecto finalizado · Listo para GitHub</span>
+    </article>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="info">
+          <span class="info-ico">🐍</span>
+          <div class="info-txt">
+            <strong>Desarrollado con Python</strong>
+            <span>Base sólida y moderna para cada proyecto.</span>
+          </div>
+        </div>
+        <div class="info">
+          <span class="info-ico">🧠</span>
+          <div class="info-txt">
+            <strong>Inteligencia Artificial</strong>
+            <span>Al servicio de tus ideas.</span>
+          </div>
+        </div>
+        <div class="info">
+          <span class="info-ico">🚀</span>
+          <div class="info-txt">
+            <strong>Del aprendizaje a la implementación</strong>
+            <span>Este es solo el comienzo.</span>
+          </div>
+        </div>
+      </div>
+      <p class="copyright">Todos los proyectos finalizados y publicados en <span class="accent">GitHub</span> · Fundación SPLAI</p>
+    </div>
+  </footer>
+
+  <script>
+    // Animación de aparición al hacer scroll
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('show'), i * 60);
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
+
+</body>
+</html>
